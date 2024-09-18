@@ -1,5 +1,6 @@
 import random
 
+
 def guess_number():
     while True:
         # Generate a random number between 1 and 3 (inclusive)
@@ -11,17 +12,21 @@ def guess_number():
             
             # Display player and computer numbers.
             print(f"\nYou chose: {player_number}\nComputer chose: {computer_number}\n")
-            
-            # Check if the player's guess matches the computer's number
-            if computer_number == player_number:
-                print("🎉🎉 You win!")
-            else:
-                print("😢 You Lose!")
-
+        
+            def decide_winner(player, computer):
+                # Check if the player's guess matches the computer's number
+                if player == computer:
+                    return "🎉🎉 You win!"
+                else:
+                    return f"Sorry ... better luck next time. 😢"
+        
+            game_result = decide_winner(player_number, computer_number)
+            print(game_result)
+        
         except ValueError:
             print("Invalid input!! Please enter a number.\n")
             continue
-        
+    
         # Ask user if they want to play again.
         print("\nPlay again?!")
         playagain = input("Y for Yes\nQ to Quit\n").strip().lower()
@@ -29,7 +34,7 @@ def guess_number():
         # Validate input.
         while playagain not in ["y", "q"]:
             playagain = input("Y for Yes\nQ to Quit\n").strip().lower()
-            
+        
         # Determine the winner.
         if playagain == "y":
             print("==== Welcome Back 😍 ====")
@@ -37,7 +42,7 @@ def guess_number():
         else:
             print("\n🎉🎉🎉🎉\nThank you for playing\nBye 👋")
             break
-        
+
 
 if __name__ == '__main__':
     guess_number()
