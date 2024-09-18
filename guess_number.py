@@ -9,11 +9,14 @@ def guess_number():
             # Ask the player to guess the number
             player_number = int(input("Guess which number I'm thinking of .. 1, 2 or 3:\n"))
             
+            # Display player and computer numbers.
+            print(f"\nYou chose: {player_number}\nComputer chose: {computer_number}\n")
+            
             # Check if the player's guess matches the computer's number
             if computer_number == player_number:
-                print("\n🎉🎉 You win!")
+                print("🎉🎉 You win!")
             else:
-                print("\n😢 You Lose!")
+                print("😢 You Lose!")
 
         except ValueError:
             print("Invalid input!! Please enter a number.\n")
