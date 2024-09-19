@@ -7,6 +7,9 @@ def computer_guess_number():
     print("\nThink of a number between 1 and 100 .. and I will try to guess it.\n")
     input("Press Enter when you're ready...\n")
     
+    # Initialize a counter for attempts
+    computer_attempts = 0
+    
     # Initialize game limits
     low = 1
     high = 100
@@ -15,6 +18,10 @@ def computer_guess_number():
         # Let the computer make a random guess.
         computer_guess = random.randint(low, high)
         print(f"My guess is: {computer_guess}")
+        
+        # Increment and display computer attempts each round.
+        computer_attempts += 1
+        print(f"\nAttempt #{computer_attempts}\n")
         
         # Get Feedback from user.
         feedback = input(f"Is {computer_guess} Correct (C), Too Low (L), or Too High (H)?\n").strip().lower()
@@ -30,7 +37,7 @@ def computer_guess_number():
             high = computer_guess - 1
         
         else:
-            print("\n🎉🎉 Yey! I guessed your number correctly.")
+            print(f"\n🎉🎉 Yey! I guessed your number correctly in only {computer_attempts} attempts!!")
             break
     
     # Ask user if they want to play again.
