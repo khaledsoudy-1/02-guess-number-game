@@ -1,7 +1,8 @@
 import random
+import sys
 
 
-def guess_number():
+def computer_guess_number():
     # Ask user to think of a secret number.
     print("\nThink of a number between 1 and 100 .. and I will try to guess it.\n")
     input("Press Enter when you're ready...\n")
@@ -31,8 +32,24 @@ def guess_number():
         else:
             print("\n🎉🎉 Yey! I guessed your number correctly.")
             break
+    
+    # Ask user if they want to play again.
+    print("\nPlay again?!")
+    playagain = input("Y for Yes\nQ to Quit\n").strip().lower()
+    
+    # Validate play again input.
+    while playagain not in ["y", "q"]:
+        playagain = input("Y for Yes\nQ to Quit\n").strip().lower()
+        
+    if playagain == "y":
+        print("===== Welcome Back 😍 =====")
+        return computer_guess_number()
+    
+    if playagain == "q":
+        print("\n🎉🎉🎉🎉\nThank you for playing\nBye 👋")
+        sys.exit()
 
 
 if __name__ == '__main__':
     print("===== Welcome To The Guess Number Game 🎲 =====")
-    guess_number()
+    computer_guess_number()
