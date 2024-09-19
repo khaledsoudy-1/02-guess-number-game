@@ -15,6 +15,11 @@ def guess_number():
             # Ask the player to guess the number
             player_number = int(input("Guess which number I'm thinking of .. 1, 2 or 3:\n"))
             
+            # Validate player input.
+            if player_number not in [1, 2, 3]:
+                print("Please enter a number between 1 and 3.\n")
+                continue
+                
             # Display player and computer numbers.
             print(f"\nYou chose: {player_number}\nComputer chose: {computer_number}\n")
         
