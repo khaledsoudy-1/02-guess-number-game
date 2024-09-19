@@ -26,10 +26,12 @@ def computer_guess_number():
         # Get Feedback from user.
         feedback = input(f"Is {computer_guess} Correct (C), Too Low (L), or Too High (H)?\n").strip().lower()
         
+        # Validate the feedback
         while feedback not in ["c", "l", "h"]:
             print("\nYou must enter C, L or H.")
             feedback = input(f"Is {computer_guess} Correct (C), Too Low (L), or Too High (H)?\n").strip().lower()
         
+        # Adjust the range based on the feedback
         if feedback == "l":
             low = computer_guess + 1
         
@@ -39,6 +41,13 @@ def computer_guess_number():
         else:
             print(f"\n🎉🎉 Yey! I guessed your number correctly in only {computer_attempts} attempts!!")
             break
+            
+        # Check for conflicts in the range
+        if low > high:
+            print("\nOops! Something went wrong with your inputs. The range is invalid.")
+            print("Let's try again, but please be careful with your responses.")
+            low, high = 1, 100  # Reset the range
+
     
     # Ask user if they want to play again.
     print("\nPlay again?!")
