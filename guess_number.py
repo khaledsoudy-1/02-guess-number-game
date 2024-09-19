@@ -2,6 +2,11 @@ import random
 
 
 def guess_number():
+    # Add some counters for a better game.
+    game_counter = 0
+    player_wins = 0
+    computer_wins = 0
+    
     while True:
         # Generate a random number between 1 and 3 (inclusive)
         computer_number = random.randint(1, 3)
@@ -14,18 +19,30 @@ def guess_number():
             print(f"\nYou chose: {player_number}\nComputer chose: {computer_number}\n")
         
             def decide_winner(player, computer):
+                nonlocal game_counter
+                nonlocal player_wins
+                nonlocal computer_wins
+               
                 # Check if the player's guess matches the computer's number
                 if player == computer:
+                    player_wins += 1
                     return "🎉🎉 You win!"
                 else:
+                    computer_wins += 1
                     return f"Sorry ... better luck next time. 😢"
         
             game_result = decide_winner(player_number, computer_number)
             print(game_result)
+            game_counter += 1
         
         except ValueError:
             print("Invalid input!! Please enter a number.\n")
             continue
+    
+        # Display The counters
+        print(f"\nGame Count: {game_counter}")
+        print(f"Your wins: {player_wins}")
+        print(f"Computer Wins: {computer_wins}")
     
         # Ask user if they want to play again.
         print("\nPlay again?!")
@@ -45,4 +62,5 @@ def guess_number():
 
 
 if __name__ == '__main__':
+    print("===== Welcome To The Guess Number Game 🎲 =====")
     guess_number()
